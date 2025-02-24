@@ -33,10 +33,10 @@ export default function AvatarGenerator() {
 
   return (
     <Card className="w-full max-w-4xl mb-8 shadow-lg">
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-        <div>
-          <div className="flex flex-wrap gap-8">
-            <div className="flex flex-col gap-4 flex-1 min-w-[250px]">
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-8 md:p-8">
+        <div className="space-y-6">
+          <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col gap-4 w-full">
               <div className="space-y-2">
                 <Label htmlFor="username">Username / Seed</Label>
                 <Input
@@ -58,7 +58,7 @@ export default function AvatarGenerator() {
             </div>
 
             {isSvg && (
-              <div className="space-y-2 flex-1">
+              <div className="space-y-2 w-full">
                 <Label htmlFor="text">Text / Initials</Label>
                 <Input
                   id="text"
@@ -72,7 +72,7 @@ export default function AvatarGenerator() {
             )}
           </div>
 
-          <div className="flex flex-col gap-6 flex-1 min-w-[250px]">
+          <div className="flex flex-col gap-6 flex-1">
             <div className="space-y-2">
               <Label>Roundness: {rounded}</Label>
               <Slider

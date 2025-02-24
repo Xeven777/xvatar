@@ -13,22 +13,26 @@ export default function Home() {
 
         <AvatarGenerator />
 
-        <div className="w-full max-w-3xl">
-          <h2>Featured Avatars</h2>
+        <div className="w-full max-w-4xl">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mt-2 mb-4 w-fit bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-transparent bg-clip-text py-4">
+            Featured
+          </h2>
           <AvatarGallery />
         </div>
 
-        <div className="w-full max-w-3xl">
-          <h2>Usage Guide</h2>
+        <div className="w-full max-w-4xl">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mt-2 mb-4 bg-gradient-to-r from-blue-500 w-fit to-teal-500 text-transparent bg-clip-text py-4">
+            Usage Guide
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Card>
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
               <CardHeader>
                 <CardTitle>Basic Usage</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Get started with a simple username:</p>
                 <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                  https://yourdomain.com/api/avatar/username
+                  {process.env.NEXT_PUBLIC_DOMAIN}/api/avatar/username
                 </code>
                 <div className="flex justify-center mt-4">
                   <Image
@@ -42,14 +46,15 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
               <CardHeader>
                 <CardTitle>With Initials</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Add text to your avatar:</p>
                 <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                  https://yourdomain.com/api/avatar/username.svg?text=GR
+                  {process.env.NEXT_PUBLIC_DOMAIN}
+                  /api/avatar/username.svg?text=GR
                 </code>
                 <div className="flex justify-center mt-4">
                   <Image
@@ -63,14 +68,15 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
               <CardHeader>
                 <CardTitle>Custom Shape</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Change the roundness:</p>
                 <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                  https://yourdomain.com/api/avatar/username?rounded=20
+                  {process.env.NEXT_PUBLIC_DOMAIN}
+                  /api/avatar/username?rounded=20
                 </code>
                 <div className="flex justify-center mt-4">
                   <Image
@@ -84,14 +90,14 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
               <CardHeader>
                 <CardTitle>Custom Size</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Change the dimensions:</p>
                 <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                  https://yourdomain.com/api/avatar/username?size=200
+                  {process.env.NEXT_PUBLIC_DOMAIN}/api/avatar/username?size=200
                 </code>
                 <div className="flex justify-center mt-4">
                   <Image

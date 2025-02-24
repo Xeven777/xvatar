@@ -26,8 +26,8 @@ export default function AvatarGallery() {
                 style={{
                   width: "100px",
                   height: "100px",
-                  borderRadius: "50px",
                 }}
+                className="rounded-full transition-transform hover:scale-105 ease-in-out"
               />
             ) : (
               <Image
@@ -35,7 +35,7 @@ export default function AvatarGallery() {
                 alt={`Avatar for ${seed.name}`}
                 width={100}
                 height={100}
-                className="rounded-full transition-transform hover:scale-110"
+                className="rounded-full transition-transform hover:scale-105 ease-in-out"
               />
             )}
             <span className="text-sm text-muted-foreground">{seed.name}</span>
