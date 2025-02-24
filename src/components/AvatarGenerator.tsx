@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import styles from "../page.module.css";
+import { Button } from "./ui/button";
 
 export default function AvatarGenerator() {
   const [username, setUsername] = useState("");
@@ -27,22 +27,21 @@ export default function AvatarGenerator() {
   };
 
   return (
-    <div className={styles.generator}>
-      <div className={styles.generatorControls}>
-        <div className={styles.controlsGroup}>
-          <label>
-            Username / Seed:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter a username"
-              className={styles.input}
-            />
-          </label>
-
-          <div className={styles.formatToggle}>
+    <div>
+      <div className="flex flex-col gap-8 w-full max-w-3xl rounded-xl shadow-lg p-8">
+        <div className="flex flex-wrap gap-8">
+          <div className="flex flex-col gap-4 flex-1 min-w-[250px]">
             <label>
+              Username / Seed:
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter a username"
+                className="w-full px-3 py-2 mt-2 border  rounded-lg text-base"
+              />
+            </label>
+            <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={isSvg}
@@ -61,13 +60,13 @@ export default function AvatarGenerator() {
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Add initials (SVG only)"
                 maxLength={4}
-                className={styles.input}
+                className="w-full px-3 py-2 mt-2 border  rounded-lg text-base"
               />
             </label>
           )}
         </div>
 
-        <div className={styles.controlsGroup}>
+        <div className="flex flex-col gap-4 flex-1 min-w-[250px]">
           <label>
             Roundness: {rounded}
             <input
@@ -76,7 +75,7 @@ export default function AvatarGenerator() {
               max="120"
               value={rounded}
               onChange={(e) => setRounded(parseInt(e.target.value))}
-              className={styles.slider}
+              className="w-full mt-2"
             />
           </label>
 
@@ -88,38 +87,50 @@ export default function AvatarGenerator() {
               max="240"
               value={size}
               onChange={(e) => setSize(parseInt(e.target.value))}
-              className={styles.slider}
+              className="w-full mt-2"
             />
           </label>
         </div>
       </div>
 
-      <div className={styles.generatorPreview}>
+      <div className="flex flex-col items-center gap-4">
         {username ? (
           <>
-            <div className={styles.avatarPreview}>
-              <Image
-                src={avatarUrl}
-                alt={`Avatar for ${username}`}
-                width={240}
-                height={240}
-                className={styles.previewImage}
-                style={{
-                  borderRadius: `${Math.min(rounded, 120)}px`,
-                  maxWidth: "240px",
-                  maxHeight: "240px",
-                }}
-              />
+            <div className="w-60 h-60 flex justify-center items-center bg-card rounded-xl">
+              {isSvg ? (
+                <img
+                  src={avatarUrl}
+                  alt={`Avatar for ${username}`}
+                  style={{
+                    width: `${Math.min(size, 240)}px`,
+                    height: `${Math.min(size, 240)}px`,
+                    borderRadius: `${Math.min(rounded, 120)}px`,
+                    maxWidth: "240px",
+                    maxHeight: "240px",
+                  }}
+                />
+              ) : (
+                <Image
+                  src={avatarUrl}
+                  alt={`Avatar for ${username}`}
+                  width={240}
+                  height={240}
+                  className="object-contain"
+                  style={{
+                    borderRadius: `${Math.min(rounded, 120)}px`,
+                    maxWidth: "240px",
+                    maxHeight: "240px",
+                  }}
+                />
+              )}
             </div>
-            <div className={styles.previewUrl}>
+            <div className="bg-card px-3 py-2 rounded-lg text-sm w-full overflow-x-auto whitespace-nowrap">
               <code>{avatarUrl}</code>
             </div>
-            <button onClick={downloadAvatar} className={styles.downloadButton}>
-              Download
-            </button>
+            <Button onClick={downloadAvatar}>Download</Button>
           </>
         ) : (
-          <div className={styles.placeholderPreview}>
+          <div className="w-60 h-60 flex justify-center items-center bg-card rounded-xl text-muted-foreground p-4 text-center">
             Enter a username to generate an avatar
           </div>
         )}

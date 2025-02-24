@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import styles from "../page.module.css";
 
 const popularSeeds = [
   { name: "rauchg", text: "GR" },
@@ -15,17 +14,17 @@ const popularSeeds = [
 
 export default function AvatarGallery() {
   return (
-    <div className={styles.gallery}>
+    <div className="grid grid-cols-auto-fill-80 gap-6 w-full p-4 rounded-xl shadow-lg">
       {popularSeeds.map((seed) => (
-        <div key={seed.name} className={styles.galleryItem}>
+        <div key={seed.name} className="flex flex-col items-center gap-2">
           <Image
             src={`/api/avatar/${seed.name}.svg?text=${seed.text}`}
             alt={`Avatar for ${seed.name}`}
             width={80}
             height={80}
-            className={styles.galleryAvatar}
+            className="rounded-full transition-transform hover:scale-110"
           />
-          <span className={styles.galleryName}>{seed.name}</span>
+          <span className="text-sm text-gray-500">{seed.name}</span>
         </div>
       ))}
     </div>

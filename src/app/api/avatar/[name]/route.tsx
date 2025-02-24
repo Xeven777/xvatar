@@ -6,43 +6,17 @@ export const runtime = "edge";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { name: string } }
+  { params }: { params: Promise<{ name: string }> }
 ) {
   const { searchParams } = new URL(request.url);
   const text = searchParams.get("text");
   const size = Number(searchParams.get("size") || "120");
   const rounded = Number(searchParams.get("rounded") || "60");
-  const animation = searchParams.get("animate") === "true";
 
-  const [username, type] = params.name.split(".");
+  const [username, type] = (await params).name.split(".");
   const fileType = type?.includes("svg") ? "svg" : "png";
 
   const gradient = await generateGradient(username || `${Math.random()}`);
-
-  // Animation attributes for SVG (only applied if animation is requested)
-  const animationAttrs =
-    animation && fileType === "svg"
-      ? {
-          children: (
-            <>
-              <animate
-                attributeName="x"
-                values="0;0"
-                dur="3s"
-                repeatCount="indefinite"
-              />
-              <animateTransform
-                attributeName="gradientTransform"
-                type="rotate"
-                from="0 0.5 0.5"
-                to="360 0.5 0.5"
-                dur="8s"
-                repeatCount="indefinite"
-              />
-            </>
-          ),
-        }
-      : {};
 
   const avatar = (
     <svg
@@ -53,14 +27,7 @@ export async function GET(
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient
-          id="gradient"
-          x1="0"
-          y1="0"
-          x2="1"
-          y2="1"
-          {...animationAttrs}
-        >
+        <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor={gradient.fromColor} />
           <stop offset="100%" stopColor={gradient.toColor} />
         </linearGradient>
@@ -93,7 +60,42 @@ export async function GET(
   );
 
   if (fileType === "svg") {
-    return new Response(avatar.toString(), {
+    const textElement =
+      fileType === "svg" && !!text
+        ? `<text
+          x="50%"
+          y="50%"
+          alignment-baseline="central"
+          dominant-baseline="central"
+          text-anchor="middle"
+          fill="#fff"
+          font-family="system-ui, sans-serif"
+          font-size="${Math.min(size * 0.5, (size * 0.9) / text.length)}"
+          font-weight="bold"
+        >${text}</text>`
+        : "";
+
+    const svgString = `<?xml version="1.0" encoding="UTF-8"?>
+      <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${gradient.fromColor}" />
+            <stop offset="100%" stop-color="${gradient.toColor}" />
+          </linearGradient>
+        </defs>
+        <rect
+          fill="url(#gradient)"
+          x="0"
+          y="0"
+          width="${size}"
+          height="${size}"
+          rx="${rounded}"
+          ry="${rounded}"
+        />
+        ${textElement}
+      </svg>`;
+
+    return new Response(svgString, {
       headers: {
         "Content-Type": "image/svg+xml",
         "Cache-Control": "public, max-age=604800, immutable",

@@ -1,82 +1,89 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import AvatarGenerator from "@/components/AvatarGenerator";
 import AvatarGallery from "@/components/AvatarGallery";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Gradient Avatar Generator</h1>
+    <div className="px-8 max-w-7xl mx-auto">
+      <main className="min-h-screen py-8 flex-1 flex flex-col justify-start items-center gap-12">
+        <h1 className="m-0 leading-tight text-5xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 text-center">
+          Gradient Avatar Generator
+        </h1>
 
         <AvatarGenerator />
 
-        <div className={styles.gallerySection}>
+        <div className="w-full max-w-3xl">
           <h2>Featured Avatars</h2>
           <AvatarGallery />
         </div>
 
-        <div className={styles.usageSection}>
+        <div className="w-full max-w-3xl">
           <h2>Usage Guide</h2>
-          <div className={styles.usageGrid}>
-            <div className={styles.usageCard}>
-              <h3>Basic Usage</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div className="rounded-xl p-6 shadow-lg">
+              <h3 className="mt-0 mb-4">Basic Usage</h3>
               <p>Get started with a simple username:</p>
-              <code>https://yourdomain.com/api/avatar/username</code>
-              <div className={styles.exampleAvatar}>
+              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                https://yourdomain.com/api/avatar/username
+              </code>
+              <div className="flex justify-center mt-4">
                 <Image
                   src="/api/avatar/rauchg"
                   alt="Basic avatar"
                   width={64}
                   height={64}
-                  className={styles.avatar}
+                  className="rounded-full"
                 />
               </div>
             </div>
 
-            <div className={styles.usageCard}>
-              <h3>With Initials</h3>
+            <div className="rounded-xl p-6 shadow-lg">
+              <h3 className="mt-0 mb-4">With Initials</h3>
               <p>Add text to your avatar:</p>
-              <code>
+              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
                 https://yourdomain.com/api/avatar/username.svg?text=GR
               </code>
-              <div className={styles.exampleAvatar}>
+              <div className="flex justify-center mt-4">
                 <Image
                   src="/api/avatar/rauchg.svg?text=GR"
                   alt="Avatar with initials"
                   width={64}
                   height={64}
-                  className={styles.avatar}
+                  className="rounded-full"
                 />
               </div>
             </div>
 
-            <div className={styles.usageCard}>
-              <h3>Custom Shape</h3>
+            <div className="rounded-xl p-6 shadow-lg">
+              <h3 className="mt-0 mb-4">Custom Shape</h3>
               <p>Change the roundness:</p>
-              <code>https://yourdomain.com/api/avatar/username?rounded=20</code>
-              <div className={styles.exampleAvatar}>
+              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                https://yourdomain.com/api/avatar/username?rounded=20
+              </code>
+              <div className="flex justify-center mt-4">
                 <Image
                   src="/api/avatar/vercel?rounded=20"
                   alt="Square avatar"
                   width={64}
                   height={64}
-                  className={styles.avatarSquare}
+                  className="rounded-[20%]"
                 />
               </div>
             </div>
 
-            <div className={styles.usageCard}>
-              <h3>Custom Size</h3>
+            <div className="rounded-xl p-6 shadow-lg">
+              <h3 className="mt-0 mb-4">Custom Size</h3>
               <p>Change the dimensions:</p>
-              <code>https://yourdomain.com/api/avatar/username?size=200</code>
-              <div className={styles.exampleAvatar}>
+              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                https://yourdomain.com/api/avatar/username?size=200
+              </code>
+              <div className="flex justify-center mt-4">
                 <Image
                   src="/api/avatar/next?size=64"
                   alt="Larger avatar"
                   width={64}
                   height={64}
-                  className={styles.avatar}
+                  className="rounded-full"
                 />
               </div>
             </div>
@@ -84,15 +91,16 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      <footer className="flex flex-1 py-8 border-t  justify-center items-center w-full">
         <p>
-          Gradient Avatars - Built with{" "}
+          Gradient Avatars - Built by{" "}
           <a
-            href="https://nextjs.org"
+            href="https://anish7.me"
             target="_blank"
             rel="noopener noreferrer"
+            className="text-primary hover:underline"
           >
-            Next.js App Router
+            Anish
           </a>
         </p>
       </footer>
