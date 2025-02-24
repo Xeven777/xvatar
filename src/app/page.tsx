@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="px-8 max-w-7xl mx-auto">
       <main className="min-h-screen py-8 flex-1 flex flex-col justify-start items-center gap-12">
-        <h1 className="m-0 leading-tight text-5xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 text-center">
+        <h1 className="leading-tight tracking-tighter text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-primary text-center">
           Gradient Avatar Generator
         </h1>
 

@@ -60,7 +60,7 @@ export default function AvatarGenerator() {
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Add initials (SVG only)"
                 maxLength={4}
-                className="w-full px-3 py-2 mt-2 border  rounded-lg text-base"
+                className="w-full px-3 py-2 mt-2 border rounded-lg text-base"
               />
             </label>
           )}

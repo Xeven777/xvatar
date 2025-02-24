@@ -10,8 +10,8 @@ export async function GET(
 ) {
   const { searchParams } = new URL(request.url);
   const text = searchParams.get("text");
-  const size = Number(searchParams.get("size") || "120");
-  const rounded = Number(searchParams.get("rounded") || "60");
+  const size = Number(searchParams.get("size") || "140");
+  const rounded = Number(searchParams.get("rounded") || "70");
 
   const [username, type] = (await params).name.split(".");
   const fileType = type?.includes("svg") ? "svg" : "png";
@@ -41,21 +41,6 @@ export async function GET(
         rx={rounded}
         ry={rounded}
       />
-      {fileType === "svg" && !!text ? (
-        <text
-          x="50%"
-          y="50%"
-          alignmentBaseline="central"
-          dominantBaseline="central"
-          textAnchor="middle"
-          fill="#fff"
-          fontFamily="system-ui, sans-serif"
-          fontSize={Math.min(size * 0.5, (size * 0.9) / text.length)}
-          fontWeight="bold"
-        >
-          {text}
-        </text>
-      ) : null}
     </svg>
   );
 
@@ -64,13 +49,13 @@ export async function GET(
       fileType === "svg" && !!text
         ? `<text
           x="50%"
-          y="50%"
+          y="49%"
           alignment-baseline="central"
           dominant-baseline="central"
           text-anchor="middle"
           fill="#fff"
           font-family="system-ui, sans-serif"
-          font-size="${Math.min(size * 0.5, (size * 0.9) / text.length)}"
+          font-size="${Math.min(size * 0.4, (size * 0.8) / text.length)}"
           font-weight="bold"
         >${text}</text>`
         : "";
