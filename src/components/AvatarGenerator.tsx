@@ -8,12 +8,13 @@ import { Label } from "./ui/label";
 import { Slider } from "./ui/slider";
 import { Card, CardContent } from "./ui/card";
 import { Checkbox } from "./ui/checkbox";
+import { Copy, Download } from "lucide-react";
 
 export default function AvatarGenerator() {
   const [username, setUsername] = useState("");
   const [text, setText] = useState("");
-  const [rounded, setRounded] = useState(60);
-  const [size, setSize] = useState(120);
+  const [rounded, setRounded] = useState(120);
+  const [size, setSize] = useState(240);
   const [isSvg, setIsSvg] = useState(false);
 
   const avatarUrl = `/api/avatar/${username}${
@@ -100,7 +101,7 @@ export default function AvatarGenerator() {
         <div className="flex flex-col items-center gap-4">
           {username ? (
             <>
-              <Card className="w-60 h-60 flex justify-center items-center">
+              <div className="size-60 rounded-full flex justify-center items-center relative">
                 {isSvg ? (
                   <img
                     src={avatarUrl}
@@ -127,16 +128,39 @@ export default function AvatarGenerator() {
                     }}
                   />
                 )}
-              </Card>
-              <Card className="w-full">
-                <CardContent className="p-4">
-                  <code className="text-sm">{avatarUrl}</code>
+                <Button
+                  className="absolute right-0 bottom-0"
+                  onClick={downloadAvatar}
+                  variant={"ghost"}
+                  size={"icon"}
+                >
+                  <Download size={18} />
+                </Button>
+              </div>
+              <Card className="w-full relative">
+                <CardContent className="px-4">
+                  <code className="text-sm">
+                    {process.env.NEXT_PUBLIC_DOMAIN}
+                    {avatarUrl}
+                  </code>
                 </CardContent>
+                <Button
+                  className="absolute right-0 bottom-0"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `${process.env.NEXT_PUBLIC_DOMAIN}${avatarUrl}`
+                    );
+                    alert("Copied to clipboard!");
+                  }}
+                  variant={"ghost"}
+                  size={"icon"}
+                >
+                  <Copy size={18} />
+                </Button>
               </Card>
-              <Button onClick={downloadAvatar}>Download</Button>
             </>
           ) : (
-            <Card className="w-60 h-60 flex justify-center items-center text-muted-foreground p-4 text-center">
+            <Card className="size-60 bg-primary/5 flex justify-center items-center text-muted-foreground p-4 text-center">
               Enter a username to generate an avatar
             </Card>
           )}

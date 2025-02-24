@@ -6,8 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function Home() {
   return (
     <div className="px-8 max-w-7xl mx-auto">
+      <div className="absolute -top-40 left-0 rounded-full bg-primary/20 -z-10 h-36 w-full blur-3xl"></div>
+
       <main className="min-h-screen py-8 flex-1 flex flex-col justify-start items-center gap-12">
-        <h1 className="leading-tight tracking-tighter text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-primary text-center">
+        <h1 className="leading-tight tracking-tighter text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-primary text-center mt-14">
           Gradient Avatar Generator
         </h1>
 

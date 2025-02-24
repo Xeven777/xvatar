@@ -19,7 +19,7 @@ async function hue(str: string): Promise<number> {
 
 export async function generateGradient(username: string) {
   const h = await hue(username);
-  const s = 0.95;
+  const s = 0.98;
   const l = 0.5;
   const c1 = color({ h, s, l });
 
