@@ -1,61 +1,75 @@
-# Next.js Project with ShadCn
+# Xvatar 🎨 ![](https://xvatar.vercel.app/api/avatar/anish?size=20) ![](https://xvatar.vercel.app/api/avatar/hahaha?size=20) ![](https://xvatar.vercel.app/api/avatar/awesome?size=20) ![](https://xvatar.vercel.app/api/avatar/nextjs?size=20)
 
-This project demonstrates a basic setup of a Next.js application integrated with ShadCn UI and comes with theme toggle for dark and light modes.
+Generate stunning gradient avatars with unique patterns for your applications! ✨
 
-## Features ✨
+## Features 🚀
 
-- **NextJS 15 app router**: Build your UI with the latest version of NextJS 14.
-- **Tailwind CSS v4**: Style your application with utility-first CSS framework Tailwind CSS.
-- **Shadcn UI** : The most trending UI library for modern looking apps. Input, button, sheet, sonner , dropdown and avatar already added!
-- **Theme Toggle**: Includes functionality for switching between dark and light themes, improving user experience and accessibility.
+- 🌈 Unique gradient combinations based on username
+- 🎭 Multiple color schemes (Complementary, Triad, Analogous)
+- 📐 Adjustable roundness (0-120px)
+- 📏 Custom size support (20-240px)
+- 💫 Both radial and linear gradients
+- 🎯 SVG format support with text/initials
+- 🖼️ PNG format support
+- 🔄 Consistent results for same usernames
 
+## Usage 📖
 
-### Prerequisites
+### Basic Usage 🌱
 
-Ensure you have Node.js installed on your machine. You can check by running `node -v` in your terminal. If not, download and install it from [Node.js website](https://nodejs.org).
+```
+https://xvatar.vercel.app/api/avatar/username
+```
 
-### Installation
+![Basic Avatar](https://xvatar.vercel.app/api/avatar/demo)
 
-1. **You can either use this as a template or git clone it:**
+### SVG with Initials ✍️
 
-   ```sh
-   git clone --depth 1 https://github.com/Xeven777/next-shadcn-template.git
+Add `.svg` extension and use the `text` parameter:
 
-   ```
+```
+https://xvatar.vercel.app/api/avatar/username.svg?text=XA
+```
 
-This will create a new directory named `next-shadcn-template` in your current directory.
+![Avatar with Initials](https://xvatar.vercel.app/api/avatar/anotherDemo.svg?text=XA)
 
-2. **Remove the old `.git` directory and initialize a new one:**
-   Navigate to the new `next-shadcn-template` directory and run the following commands:
+### Custom Shape 🔷
 
-   ```sh
-   cd next-shadcn-template
-   rm -rf .git
-   git init
-   ```
+Adjust the roundness (0-120):
 
-3. **Install the dependencies:**
-   Run the following command to install the project dependencies:
+```
+https://xvatar.vercel.app/api/avatar/username?rounded=20
+```
 
-   ```sh
-   npm/bun install
-   ```
+![Square Avatar](https://xvatar.vercel.app/api/avatar/damndemo?rounded=20)
 
-4. **Start the development server:**
-   After installing the dependencies, start the development server by running:
+### Custom Size 📐
 
-   ```sh
-   npm/bun run dev
-   ```
+Change dimensions (20-240px):
 
-   Now, you should be able to see the application running at `localhost:3000` in your web browser! ✨
+```
+https://xvatar.vercel.app/api/avatar/username?size=120
+```
 
-##### You can also download the code as Zip or use it as a template.
+![Large Avatar](https://xvatar.vercel.app/api/avatar/huge?size=120)
 
-### Contributing
+## API Parameters 🛠️
 
-We welcome contributions from the community. Whether you want to add new features, fix bugs, or improve documentation, your help is appreciated.
+| Parameter | Description             | Default | Range     |
+| --------- | ----------------------- | ------- | --------- |
+| `rounded` | Corner radius in pixels | 120     | 0-120     |
+| `size`    | Image dimensions        | 120     | 20-240    |
+| `text`    | Initials (SVG only)     | -       | 1-4 chars |
 
-### Owner
+## Try It Out 🎮
 
-The primary contact for inquiries about the project is [Anish Biswas](https://github.com/Xeven777). Feel free to reach out for any questions, suggestions, or issues related to the project. My [Linkedin](https://www.linkedin.com/in/anishbiswas777/).
+Visit [xvatar.vercel.app](https://xvatar.vercel.app) to try the generator live!
+
+## Built With 💪
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+
+Made by [Anish Biswas](https://anish7.me) with ❤️
