@@ -19,10 +19,13 @@ async function hue(str: string): Promise<number> {
 
 export async function generateGradient(username: string) {
   const h = await hue(username);
-  const c1 = color({ h, s: 0.95, l: 0.5 });
+  const s = 0.95;
+  const l = 0.5;
+  const c1 = color({ h, s, l });
 
-  // Generate more interesting color schemes
   const colorScheme = Math.floor(await hash(username + "scheme")) % 3;
+  const gradientRotation = Math.floor(await hash(username + "rotation")) % 360; // Add rotation
+  const isRadial = (await hash(username + "radial")) % 2 === 0; // Determine radial or linear
 
   let second;
 
@@ -46,5 +49,7 @@ export async function generateGradient(username: string) {
   return {
     fromColor: c1.toHexString(),
     toColor: second,
+    rotation: gradientRotation, // Pass rotation
+    isRadial: isRadial, // Pass radial flag
   };
 }

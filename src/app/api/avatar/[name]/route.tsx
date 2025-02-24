@@ -18,6 +18,10 @@ export async function GET(
 
   const gradient = await generateGradient(username || `${Math.random()}`);
 
+  const { fromColor, toColor, rotation, isRadial } = gradient;
+
+  const gradientTransform = `rotate(${rotation})`;
+
   const avatar = (
     <svg
       width={size}
@@ -27,10 +31,24 @@ export async function GET(
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={gradient.fromColor} />
-          <stop offset="100%" stopColor={gradient.toColor} />
-        </linearGradient>
+        {isRadial ? (
+          <radialGradient id="gradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={fromColor} />
+            <stop offset="100%" stopColor={toColor} />
+          </radialGradient>
+        ) : (
+          <linearGradient
+            id="gradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1"
+            gradientTransform={gradientTransform}
+          >
+            <stop offset="0%" stopColor={fromColor} />
+            <stop offset="100%" stopColor={toColor} />
+          </linearGradient>
+        )}
       </defs>
       <rect
         fill="url(#gradient)"
@@ -63,10 +81,24 @@ export async function GET(
     const svgString = `<?xml version="1.0" encoding="UTF-8"?>
       <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="${gradient.fromColor}" />
-            <stop offset="100%" stop-color="${gradient.toColor}" />
-          </linearGradient>
+          ${
+            isRadial
+              ? `<radialGradient id="gradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="${fromColor}" />
+                  <stop offset="100%" stop-color="${toColor}" />
+                </radialGradient>`
+              : `<linearGradient
+                  id="gradient"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                  gradientTransform="${gradientTransform}"
+                >
+                  <stop offset="0%" stop-color="${fromColor}" />
+                  <stop offset="100%" stop-color="${toColor}" />
+                </linearGradient>`
+          }
         </defs>
         <rect
           fill="url(#gradient)"

@@ -143,9 +143,18 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
   }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted));
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AvatarGenerator from "@/components/AvatarGenerator";
 import AvatarGallery from "@/components/AvatarGallery";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -20,73 +21,89 @@ export default function Home() {
         <div className="w-full max-w-3xl">
           <h2>Usage Guide</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <div className="rounded-xl p-6 shadow-lg">
-              <h3 className="mt-0 mb-4">Basic Usage</h3>
-              <p>Get started with a simple username:</p>
-              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                https://yourdomain.com/api/avatar/username
-              </code>
-              <div className="flex justify-center mt-4">
-                <Image
-                  src="/api/avatar/rauchg"
-                  alt="Basic avatar"
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Basic Usage</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Get started with a simple username:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  https://yourdomain.com/api/avatar/username
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/rauchg"
+                    alt="Basic avatar"
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-            <div className="rounded-xl p-6 shadow-lg">
-              <h3 className="mt-0 mb-4">With Initials</h3>
-              <p>Add text to your avatar:</p>
-              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                https://yourdomain.com/api/avatar/username.svg?text=GR
-              </code>
-              <div className="flex justify-center mt-4">
-                <Image
-                  src="/api/avatar/rauchg.svg?text=GR"
-                  alt="Avatar with initials"
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>With Initials</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Add text to your avatar:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  https://yourdomain.com/api/avatar/username.svg?text=GR
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/rauchg.svg?text=GR"
+                    alt="Avatar with initials"
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-            <div className="rounded-xl p-6 shadow-lg">
-              <h3 className="mt-0 mb-4">Custom Shape</h3>
-              <p>Change the roundness:</p>
-              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                https://yourdomain.com/api/avatar/username?rounded=20
-              </code>
-              <div className="flex justify-center mt-4">
-                <Image
-                  src="/api/avatar/vercel?rounded=20"
-                  alt="Square avatar"
-                  width={64}
-                  height={64}
-                  className="rounded-[20%]"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Custom Shape</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Change the roundness:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  https://yourdomain.com/api/avatar/username?rounded=20
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/vercel?rounded=20"
+                    alt="Square avatar"
+                    width={64}
+                    height={64}
+                    className="rounded-[20%]"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-            <div className="rounded-xl p-6 shadow-lg">
-              <h3 className="mt-0 mb-4">Custom Size</h3>
-              <p>Change the dimensions:</p>
-              <code className="block bg-gray-100 px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
-                https://yourdomain.com/api/avatar/username?size=200
-              </code>
-              <div className="flex justify-center mt-4">
-                <Image
-                  src="/api/avatar/next?size=64"
-                  alt="Larger avatar"
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Custom Size</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Change the dimensions:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  https://yourdomain.com/api/avatar/username?size=200
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/next?size=64"
+                    alt="Larger avatar"
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>
