@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 
 const popularSeeds = [
-  { name: "rauchg", text: "RG" },
+  { name: "Anish", text: "AB7" },
   { name: "leerob" },
   { name: "vercel", text: "VC" },
   { name: "next" },
@@ -16,7 +16,7 @@ const popularSeeds = [
 export default function AvatarGallery() {
   return (
     <Card>
-      <CardContent className="grid grid-cols-4 gap-6 p-4">
+      <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
         {popularSeeds.map((seed) => (
           <div key={seed.name} className="flex flex-col items-center gap-2">
             {seed.text ? (
