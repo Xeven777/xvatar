@@ -139,7 +139,7 @@ export default function AvatarGenerator() {
               </div>
               <Card className="w-full relative">
                 <CardContent className="px-4">
-                  <code className="text-sm">
+                  <code className="text-sm overflow-x-auto">
                     {process.env.NEXT_PUBLIC_DOMAIN}
                     {avatarUrl}
                   </code>
