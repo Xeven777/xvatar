@@ -180,9 +180,9 @@ const avatarUrl = generateAvatar({
 
 const customAvatar = generateAvatar({
   username: "janedoe",    // Required: Seed for the avatar
-  size: 300,             // Optional: Size in pixels (default: 240)
+  size: 300,             // Optional: Size in pixels (default: 140)
   format: "svg",         // Optional: 'png' or 'svg' (default: 'png')
-  rounded: 80,           // Optional: Corner roundness (default: 120)
+  rounded: 80,           // Optional: Corner roundness (default: 70)
   });`}
                     </code>
                   </pre>
