@@ -16,10 +16,13 @@ export default function AvatarGenerator() {
   const [rounded, setRounded] = useState(120);
   const [size, setSize] = useState(240);
   const [isSvg, setIsSvg] = useState(false);
+  const [userLogo, setUserLogo] = useState(false);
 
   const avatarUrl = `/api/avatar/${username}${
     isSvg ? ".svg" : ""
-  }?rounded=${rounded}&size=${size}${text && isSvg ? `&text=${text}` : ""}`;
+  }?rounded=${rounded}&size=${size}${text && isSvg ? `&text=${text}` : ""}${
+    userLogo ? "&userLogo=true" : ""
+  }`;
 
   const downloadAvatar = () => {
     if (!username) return;
@@ -56,9 +59,17 @@ export default function AvatarGenerator() {
                 />
                 <Label htmlFor="svg">SVG Format</Label>
               </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="userLogo"
+                  checked={userLogo}
+                  onCheckedChange={(checked) => setUserLogo(checked as boolean)}
+                />
+                <Label htmlFor="userLogo">Add User Logo</Label>
+              </div>
             </div>
 
-            {isSvg && (
+            {isSvg && !userLogo && (
               <div className="space-y-2 w-full">
                 <Label htmlFor="text">Text / Initials</Label>
                 <Input
