@@ -1,4 +1,4 @@
-# Xvatar 🎨 ![](https://xvatar.vercel.app/api/avatar/anish?size=20) ![](https://xvatar.vercel.app/api/avatar/hahaha?size=20) ![](https://xvatar.vercel.app/api/avatar/awesome?size=20) ![](https://xvatar.vercel.app/api/avatar/nextjs?size=20)
+# Xvatar 🎨 ![](https://xvatar.vercel.app/api/avatar/anish?size=20) ![](https://xvatar.vercel.app/api/avatar/cool.svg?userLogo=true&size=20) ![](https://xvatar.vercel.app/api/avatar/awesome?size=20) ![](https://xvatar.vercel.app/api/avatar/nextjs?size=20)
 
 Generate stunning gradient avatars with unique patterns for your applications! ✨
 
@@ -53,13 +53,24 @@ https://xvatar.vercel.app/api/avatar/username?size=120
 
 ![Large Avatar](https://xvatar.vercel.app/api/avatar/huge?size=120)
 
+### User Logo Icon 👤
+
+Add a user silhouette icon:
+
+```
+https://xvatar.vercel.app/api/avatar/cool.svg?userLogo=true
+```
+
+![User Logo Avatar](https://xvatar.vercel.app/api/avatar/cool.svg?userLogo=true)
+
 ## API Parameters 🛠️
 
-| Parameter | Description             | Default | Range     |
-| --------- | ----------------------- | ------- | --------- |
-| `rounded` | Corner radius in pixels | 120     | 0-120     |
-| `size`    | Image dimensions        | 120     | 20-240    |
-| `text`    | Initials (SVG only)     | -       | 1-4 chars |
+| Parameter  | Description              | Default | Range      |
+| ---------- | ------------------------ | ------- | ---------- |
+| `rounded`  | Corner radius in pixels  | 120     | 0-120      |
+| `size`     | Image dimensions         | 120     | 20-240     |
+| `text`     | Initials (SVG only)      | -       | 1-4 chars  |
+| `userLogo` | Add user silhouette icon | false   | true/false |
 
 ## Try It Out 🎮
 

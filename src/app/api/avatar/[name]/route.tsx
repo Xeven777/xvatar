@@ -37,9 +37,10 @@ export async function GET(
 
     const textElement =
       text && !userLogo
-        ? `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="${
-            size / 4
-          }" fill="#fff" font-family="Arial, sans-serif" font-weight="bold">${text}</text>`
+        ? `<text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle"  font-size="${Math.min(
+            size * 0.4,
+            (size * 0.8) / text.length
+          )}" fill="#fff" font-family="Arial, sans-serif" font-weight="bold">${text}</text>`
         : "";
 
     const svgString = `

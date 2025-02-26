@@ -8,7 +8,7 @@ export default function Home() {
     <div className="px-8 max-w-7xl mx-auto">
       <div className="absolute -top-40 left-0 rounded-full bg-primary/30 -z-10 h-36 w-full blur-3xl"></div>
 
-      <main className="min-h-screen py-8 flex-1 flex flex flex-col justify-start items-center gap-12">
+      <main className="min-h-screen py-8 flex-1 flex flex-col justify-start items-center gap-12">
         <h1 className="tracking-tighter leading-none text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-primary text-center mt-14">
           Gradient Avatar Generator
         </h1>
@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className="w-full max-w-4xl">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mt-2 mb-4 w-fit bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-transparent bg-clip-text py-4">
-            Featured
+            Featured Examples
           </h2>
           <AvatarGallery />
         </div>
@@ -116,6 +116,51 @@ export default function Home() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
+              <CardHeader>
+                <CardTitle>User Logo</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Add a user icon:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  {process.env.NEXT_PUBLIC_DOMAIN}
+                  /api/avatar/diddy?userLogo=true
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/diddy?userLogo=true"
+                    loading="lazy"
+                    alt="Avatar with user logo"
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="cursor-pointer hover:border-primary transition-all duration-300">
+              <CardHeader>
+                <CardTitle>User Logo</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Add a user icon:</p>
+                <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto my-4">
+                  {process.env.NEXT_PUBLIC_DOMAIN}
+                  /api/avatar/coolest.svg?userLogo=true
+                </code>
+                <div className="flex justify-center mt-4">
+                  <Image
+                    src="/api/avatar/coolest.svg?userLogo=true"
+                    loading="lazy"
+                    alt="Avatar with user logo"
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
@@ -179,15 +224,17 @@ const avatarUrl = generateAvatar({
                       {`// All available options
 
 const customAvatar = generateAvatar({
-  username: "janedoe",    // Required: Seed for the avatar
+  username: "scarlett",    // Required: Seed for the avatar
   size: 300,             // Optional: Size in pixels (default: 140)
   format: "svg",         // Optional: 'png' or 'svg' (default: 'png')
   rounded: 80,           // Optional: Corner roundness (default: 70)
+  userLogo: true,        // Optional: Add user icon (default: false)
+  text: "JD"            // Optional: Add text/initials (SVG only)
   });`}
                     </code>
                   </pre>
                   <Image
-                    src="/api/avatar/janedoe?rounded=80"
+                    src="/api/avatar/scarlett.svg?rounded=80&userLogo=true"
                     alt="Advanced avatar example"
                     width={100}
                     height={100}
@@ -210,12 +257,13 @@ const customAvatar = generateAvatar({
                         {`generateAvatar({
   username: "ceo@company.com",
   size: 500,
-  rounded: 100
+  rounded: 100,
+  text: "CEO"
   })`}
                       </code>
                     </pre>
                     <Image
-                      src="/api/avatar/ceo@company.com?size=100"
+                      src="/api/avatar/ceo@company.com?size=100&text=CEO"
                       alt="Professional avatar example"
                       width={64}
                       height={64}
@@ -231,12 +279,13 @@ const customAvatar = generateAvatar({
                         {`generateAvatar({
   username: "cool_user_123",
   size: 200,
-  format: "svg"
+  format: "svg",
+  userLogo: true      // Add user icon
   })`}
                       </code>
                     </pre>
                     <Image
-                      src="/api/avatar/cool_user_123"
+                      src="/api/avatar/cool_user_123?userLogo=true"
                       alt="Social media avatar example"
                       width={64}
                       height={64}

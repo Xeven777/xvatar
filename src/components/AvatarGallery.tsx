@@ -3,14 +3,18 @@ import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 
 const popularSeeds = [
-  { name: "Anish", text: "AB7" },
-  { name: "leerob" },
+  { name: "Anish", text: "AN" },
   { name: "vercel", text: "VC" },
-  { name: "next" },
+  { name: "next", userLogo: true },
   { name: "react", text: "RE" },
-  { name: "typescript", text: "TS" },
+  { name: "typescript", userLogo: true },
   { name: "edge", text: "EG" },
   { name: "satori", text: "ST" },
+  { name: "username", userLogo: true },
+  { name: "random1", text: "R1" },
+  { name: "random2", userLogo: true },
+  { name: "random3" },
+  { name: "github", text: "GH" },
 ];
 
 export default function AvatarGallery() {
@@ -27,6 +31,14 @@ export default function AvatarGallery() {
                   width: "100px",
                   height: "100px",
                 }}
+                className="rounded-full transition-transform hover:scale-105 ease-in-out"
+              />
+            ) : seed.userLogo ? (
+              <Image
+                src={`/api/avatar/${seed.name}.svg?userLogo=true`}
+                alt={`Avatar for ${seed.name}`}
+                width={100}
+                height={100}
                 className="rounded-full transition-transform hover:scale-105 ease-in-out"
               />
             ) : (
