@@ -148,7 +148,7 @@ export default function AvatarGenerator() {
                   <Download size={18} />
                 </Button>
               </div>
-              <Card className="w-full relative">
+              <Card className="w-full relative break-words">
                 <CardContent className="px-4">
                   <code className="text-sm overflow-x-auto">
                     {process.env.NEXT_PUBLIC_DOMAIN}

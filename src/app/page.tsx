@@ -192,7 +192,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col md:flex-row gap-4 items-center">
-                  <pre className="flex-1">
+                  <pre className="flex-1 w-full">
                     <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto">
                       {`import { generateAvatar } from "xvatar-sdk";
 
@@ -219,7 +219,7 @@ const avatarUrl = generateAvatar({
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col md:flex-row gap-4 items-center">
-                  <pre className="flex-1">
+                  <pre className="flex-1 w-full">
                     <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto">
                       {`// All available options
 
@@ -251,8 +251,8 @@ const customAvatar = generateAvatar({
               <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-4">
                   <p className="mb-2">Professional Avatar:</p>
-                  <div className="flex gap-4 items-center">
-                    <pre className="flex-1">
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <pre className="flex-1 w-full">
                       <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto">
                         {`generateAvatar({
   username: "ceo@company.com",
@@ -273,8 +273,8 @@ const customAvatar = generateAvatar({
                 </div>
                 <div className="flex flex-col gap-4">
                   <p className="mb-2">Social Media Profile:</p>
-                  <div className="flex gap-4 items-center">
-                    <pre className="flex-1">
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <pre className="flex-1 w-full">
                       <code className="block bg-muted px-3 py-2 rounded-lg text-sm overflow-x-auto">
                         {`generateAvatar({
   username: "cool_user_123",
@@ -299,7 +299,7 @@ const customAvatar = generateAvatar({
         </div>
       </main>
 
-      <footer className="flex flex-1 font-semibold tracking-tight py-8 border-t text-muted-foreground w-full items-center justify-center gap-6 mt-10">
+      <footer className="flex flex-wrap flex-1 font-semibold tracking-tight py-8 border-t text-muted-foreground w-full items-center justify-center gap-6 mt-10">
         <p>
           Gradient Avatars - Built by{" "}
           <a
